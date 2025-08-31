@@ -1,0 +1,96 @@
+/*
+ * spi_send_data_basic.c
+ *
+ *  Created on: Aug 29, 2025
+ *      Author: Shivaprasad
+ */
+
+/*
+ * SPI2_pins
+ * PB9-NSS
+ * PB10-SCLK
+ * PB14-MISO
+ * PB15-MOSI
+ * Alternate functionality mode-5
+ */
+
+
+
+#include <stdio.h>
+#include <string.h>
+#include "stm32f401xx.h"
+#include "stm32f_gpio_driver.h"
+#include "stm32f_spi_driver.h"
+void SPI2_GPIO_Inits(){
+	GPIO_HANDLE_t SPI2_GPIO_pins;
+	SPI2_GPIO_pins.pGPIOx=GPIOB;
+	SPI2_GPIO_pins.GPIO_PINCONFIG.GPIO_PIN_MODE=GPIO_MODE_ALTFN;
+	SPI2_GPIO_pins.GPIO_PINCONFIG.GPIO_PIN_ALT_FUNC_MODE=5;
+	SPI2_GPIO_pins.GPIO_PINCONFIG.GPIO_OUTPUT_TYPE=GPIO_OP_TYPE_PP;
+	SPI2_GPIO_pins.GPIO_PINCONFIG.GPIO_PULLUP_PULLDOWN=GPIO_PIN_NO_PUPD;
+	SPI2_GPIO_pins.GPIO_PINCONFIG.GPIO_PIN_SPEED=GPIO_OP_HSP;
+
+
+	//SCLK pin no setting
+	SPI2_GPIO_pins.GPIO_PINCONFIG.GPIO_PIN_NUMBER=GPIO_PIN_NO_10;
+	GPIO_Init(&SPI2_GPIO_pins);
+
+	/*
+	 * we are not using the nss and miso because no external slve present and it is a basic connection so we are not using those pins to reduce the 1
+	 */
+	//NSS pin no setting
+	//SPI2_GPIO_pins.GPIO_PINCONFIG.GPIO_PIN_NUMBER=GPIO_PIN_NO_9;
+	//GPIO_Init(&SPI2_GPIO_pins);
+
+	//MISO pin no setting
+	//SPI2_GPIO_pins.GPIO_PINCONFIG.GPIO_PIN_NUMBER=GPIO_PIN_NO_14;
+	//GPIO_Init(&SPI2_GPIO_pins);
+
+	//MOSI pin no setting
+	SPI2_GPIO_pins.GPIO_PINCONFIG.GPIO_PIN_NUMBER=GPIO_PIN_NO_15;
+	GPIO_Init(&SPI2_GPIO_pins);
+
+
+}
+
+
+void SPI_Config(){
+	SPI_HANDLE_t SPI_Send_data_config;
+	SPI_Send_data_config.pSPIx=SPI2;
+	SPI_Send_data_config.spi_config.SPI_dev_md=SPI_DEV_MASTER;
+	SPI_Send_data_config.spi_config.SPI_bus_cnfg=SPI_BUS_CONFIG_FD;
+	SPI_Send_data_config.spi_config.SPI_dff=SPI_DFF_16BITS;
+	SPI_Send_data_config.spi_config.SPI_CPHA=SPI_CPHA_LOW;
+	SPI_Send_data_config.spi_config.SPI_CPOL=SPI_CPOL_LOW;
+	SPI_Send_data_config.spi_config.SPI_speed=SPI_SCLK_DIV2;
+	SPI_Send_data_config.spi_config.SPI_ssm=SPI_SSM_EN;//software slave management enabled NSS pin
+	SPI_Init(&SPI_Send_data_config);
+
+}
+int main(void){
+	char abc[]="HELLO WORLD";
+//Enable the Gpio for spi
+	SPI2_GPIO_Inits();
+	//SPI config defn enabling
+	SPI_Config();
+
+     //Spi peripheral SPE enabling
+	SPI_Peripheral_Config(SPI2,ENABLE);
+
+
+	//SPI SSI sonfiguration
+	SPI_SSIConfig(SPI2,ENABLE);
+
+
+    //SPI data that is to be  sent
+	SPI_SendData(SPI2,(uint8_t*)abc,strlen(abc));
+
+	//SPI deinitialization function
+	SPI_DeInit(SPI2);
+
+
+
+	while(1);
+	return 0;
+}
+

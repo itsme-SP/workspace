@@ -1,0 +1,69 @@
+/*
+ * stm32f_spi_driver.h
+ *
+ *  Created on: Aug 22, 2025
+ *      Author: Shivaprasad
+ */
+
+#ifndef INC_STM32F_SPI_DRIVER_H_
+#define INC_STM32F_SPI_DRIVER_H_
+
+#include "stm32f401xx.h"
+
+
+
+/*
+ * handle for spi
+ */
+typedef struct{
+	SPI_periph_defn_t *pSPIx;//will hold the address of the spi peripheral
+	SPI_config_t spi_config;
+}SPI_HANDLE_t;
+
+
+/*
+ *
+ */
+uint8_t SPI_FlagStatus(SPI_periph_defn_t *pSPIx,uint32_t FLAG_NAME){
+	if(pSPIx->SR&FLAG_NAME){
+		return SPI_FLAG_SET;
+
+	}
+	return SPI_FLAG_RESET;
+}
+
+/*
+ * function definition for spi peri[heral clock activation or deactivation
+ */
+void SPI_PeriClkCtrl(SPI_periph_defn_t *pSPIx,uint8_t En_or_Di);
+
+/*
+ * function to initialize and de initialize  the spi peripheral
+ */
+void SPI_Init(SPI_HANDLE_t *pSPIHandlex);
+void SPI_DeInit(SPI_periph_defn_t *pSPIx);
+
+/*
+ * function to send and receive data
+ */
+void SPI_SendData(SPI_periph_defn_t *pSPIx,uint8_t *pTxBuffer,uint32_t Len);
+void SPI_ReceiveData(SPI_periph_defn_t *pSPIx,uint8_t *pRxBuffer,uint32_t Len);
+
+/*
+ * function for IRQ configuration and IRQ handling
+ */
+void SPI_Interrupt_Config(uint8_t IRQ_NUMBER,uint8_t EN_OR_DI);
+void SPI_Interrupt_Priority_Config(uint8_t IRQ_NUMBER,uint32_t IRQ_Priority);
+void SPI_Interrupt_Handling(SPI_HANDLE_t *pHandle );
+
+/*
+ * other peripheral control API's
+ */
+
+
+
+
+
+
+
+#endif /* INC_STM32F_SPI_DRIVER_H_ */

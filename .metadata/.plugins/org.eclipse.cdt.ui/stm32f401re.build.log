@@ -1,0 +1,13 @@
+14:19:06 **** Incremental Build of configuration Debug for project stm32f401re ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -include"D:/shiva/em/workspace/stm32f401re/Src/001led_toggle.c" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+In file included from <command-line>:
+D:/shiva/em/workspace/stm32f401re/Src/001led_toggle.c:11:9: fatal error: stm32f401xx.h: No such file or directory
+   11 | #include"stm32f401xx.h"
+      |         ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/001led_toggle.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+
+14:19:06 Build Failed. 2 errors, 0 warnings. (took 239ms)
+

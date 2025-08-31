@@ -1,0 +1,22 @@
+/*
+ * spi_send_data_basic.c
+ *
+ *  Created on: Aug 29, 2025
+ *      Author: Shivaprasad
+ */
+#include <stdio.h>
+#include "stm32f401xx.h"
+int main(void){
+	SPI_HANDLE_t SPI_Send_data;
+	SPI_Send_data.pSPIx=SPI1;
+	SPI_Send_data.spi_config.SPI_dev_md=SPI_CR1_MSTR;
+	SPI_Send_data.spi_config.SPI_bus_cnfg=SPI_BUS_CONFIG_FD;
+	SPI_Send_data.spi_config.SPI_dff=SPI_CR1_DFF;
+	SPI_Send_data.spi_config.SPI_CPHA=SPI_CPHA_LOW;
+	SPI_Send_data.spi_config.SPI_CPOL=SPI_CPOL_LOW;
+	SPI_Send_data.spi_config.SPI_speed=SPI_SCLK_DIV2;
+	SPI_Send_data.spi_config.SPI_ssm=SPI_SSM_EN;
+	SPI_PeriClkCtrl(SPI1, ENABLE);
+	SPI_Init(&SPI_Send_data);
+}
+

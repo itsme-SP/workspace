@@ -1,0 +1,9 @@
+/*
+ * spi_send_data_basic.c
+ *
+ *  Created on: Aug 29, 2025
+ *      Author: Shivaprasad
+ */
+#include <stdio.h>
+#include "stm32f401xx.h"
+

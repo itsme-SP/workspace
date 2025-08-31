@@ -1,0 +1,170 @@
+/*
+ * stm32f_spi_driver.c
+ *
+ *  Created on: Aug 22, 2025
+ *      Author: Shivaprasad
+ */
+#include "stm32f_spi_driver.h"
+
+
+/*
+ * function definition for spi peri[heral clock activation or deactivation
+ */
+/*
+ * @fn                           -SPI_PeriClkCtrl
+ *
+ * @brief                        -this function will either enable the peripheral clock or disable it
+ *
+ * GPIO_Register_Definition_t   -base address of the SPI peripheral like the base address of spi1 or 2 or 3 or 4 peripherals
+ * EN_OR_DI                     - ENABLE OR DISABLE MACROS
+ *
+ * @return                      -none
+ *
+ * @Note                        -none
+ */
+void SPI_PeriClkCtrl(SPI_periph_defn_t *pSPIx,uint8_t En_or_Di){
+	if(En_or_Di==ENABLE){
+		if(pSPIx==SPI1){
+			SPI1_PCLK_EN();
+		}
+		else if(pSPIx==SPI2){
+			SPI2_PCLK_EN();
+		}
+		else if(pSPIx==SPI3){
+			SPI3_PCLK_EN();
+		}
+		else if(pSPIx==SPI4){
+			SPI4_PCLK_EN();
+		}
+	}
+	else{
+		if(pSPIx==SPI1){
+			SPI1_PCLK_DI();
+		}
+		else if(pSPIx==SPI2){
+					SPI2_PCLK_DI();
+				}
+		else if(pSPIx==SPI3){
+					SPI3_PCLK_DI();
+				}
+		else if(pSPIx==SPI4){
+					SPI4_PCLK_DI();
+				}
+	}
+}
+
+
+/*
+ * function to initialize the spi peripheral
+ */
+/*
+ * @fn                           -SPI_Init
+ *
+ * @brief                        -this function is for setting the cr1 register according to user
+ *
+ * SPI_HANDLE_t                -in SPI_HANDLE_t we have the register defintion pointer that will pint to the registers that are present in the microcontroller and the config structure is present that will point to the
+ *                              the functions like speed and all they are not present in the hardware its for easy use for the user and we use this handle so that at once we can set the SPI peripheral and also set the values for it
+ *                              the reason we are using handle in here is because we have a lot of things like speed,mode etc to define when we turn on a particular peripheral.
+ * @return                      -none
+ *
+ * @Note                        -none
+ */
+void SPI_Init(SPI_HANDLE_t *pSPIHandlex){
+	uint32_t temp=0;
+
+
+	//to configure the mode of the spi refister so we will use cr1 register pg no 602 and  configure the mstr register to 1 for master mode and 0 for slave mode it is located in the second bit of cr1 register
+	//here SPI_CR1_MSTR value is 2 it is the bit position of mstr register
+	temp|=pSPIHandlex->spi_config.SPI_dev_md<<SPI_CR1_MSTR;//so here we are using the device mode value which the user has given 0 or 1, 0 for slave and 1 for master to left shift by two bits and set it
+
+	//to configure the spi bus config
+	if(pSPIHandlex->spi_config.SPI_bus_cnfg==SPI_BUS_CONFIG_FD){
+		//configure full duplex mode lecture number 139 using the bidi mode register
+		temp&=~(1<<SPI_CR1_BIDIMODE);
+	}
+	else if(pSPIHandlex->spi_config.SPI_bus_cnfg==SPI_BUS_CONFIG_HD){
+		//configure half duplex
+		temp|=(1<<SPI_CR1_BIDIMODE);
+
+	}
+	else if(pSPIHandlex->spi_config.SPI_bus_cnfg==SPI_BUS_CONFIG_SIMPLEX_RX){
+		//configure simplex receiver to do that we have to clear the full duplex register that is bidi register and set the rx only line to 1
+		//clear the bidi mode register to zero which turns full duplex on
+		temp&=~(1<<15);
+		//turn on RX only bit to 1 in the control register bit number 10 to forcefully make the line as receiving line
+		temp|=(1<<10);
+
+	}
+	//to configure the data frame format by using the dff register present in cr register 11 bit
+	if(pSPIHandlex->spi_config.SPI_dff==SPI_DFF_16BITS){
+		temp|=1<<11;//setting the 11th bit of the cr1 register 1 to make spi sends 16bit and receives 16bbits during communication
+	}
+	else{
+		temp&=~(1<<11);//clearing the 11th bit of the cr1 register
+	}
+	//to configure the CPHA bits
+	if(pSPIHandlex->spi_config.SPI_CPHA==SPI_CPHA_HIGH){
+		temp|=1<<0;
+	}
+	else
+		temp&=~(1<<0);
+
+	//to configure the CPOL bits
+	if(pSPIHandlex->spi_config.SPI_CPOL==SPI_CPOL_HIGH){
+		temp|=1<<1;
+	}
+	else
+		temp&=~(1<<1);
+
+	//to configure the speed of the spi peripheral
+	temp&=~(7<<3);//to clear the 3 bits of the spi cr1 register[ baud rate peripheral
+	temp|=pSPIHandlex->spi_config.SPI_speed<<3;//set the 3rd bit according to the  user input we can directly do this because the handle variable is present directly as the register
+
+	//to configure the slave select management
+	temp&=~(1<<9);//clearing the bit responsible for slave select management we dont really need to clear the bits because we are starting with 0
+	temp|=pSPIHandlex->spi_config.SPI_ssm<<9;//setting the bit for slave select management 0 to work as the slave and 1 to work as the master
+	/*
+	 * we have used = operator instead of the or operator we did this because if we used only the or operator then the register that was previousy set would remaina as it is but now
+	 * the whole CR1 register will be reset
+	 */
+	pSPIHandlex->pSPIx->CR1=temp; //we are initializing temp to the CR1 in the pspi_definition_t structure
+}
+/*
+ * function to de-initialize the spi peripheral
+/*
+ * @fn                           -SPI_Deinit
+ *
+ * @brief                        -this function will disable the SPI PIN/PORT
+ *
+ * SPI_periph_defn_t             - SPI_periph_defn_is being used because to turn of a peripheral we dont need to know anything except its address unlike initializing
+ *                                 where we need to know lot of stuff like mode,config etc we dont need that in here
+ * @return                      -none
+ *
+ * @Note                        -none
+ */
+void SPI_DeInit(SPI_periph_defn_t *pSPIx){
+	if(pSPIx==SPI1){
+		SPI1_REG_RESET();
+	}
+	if(pSPIx==SPI2){
+		SPI2_REG_RESET();
+	}
+	if(pSPIx==SPI3){
+		SPI3_REG_RESET();
+	}
+	if(pSPIx==SPI4){
+		SPI4_REG_RESET();
+	}
+}
+/*
+* function to send and receive data
+*/
+void SPI_SendData(SPI_periph_defn_t *pSPIx,uint8_t *pTxBuffer,uint32_t Len);
+void SPI_ReceiveData(SPI_periph_defn_t *pSPIx,uint8_t *pRxBuffer,uint32_t Len);
+
+/*
+* function for IRQ configuration and IRQ handling
+*/
+void SPI_Interrupt_Config(uint8_t IRQ_NUMBER,uint8_t EN_OR_DI);
+void SPI_Interrupt_Priority_Config(uint8_t IRQ_NUMBER,uint32_t IRQ_Priority);
+void SPI_Interrupt_Handling(SPI_HANDLE_t *pHandle );
