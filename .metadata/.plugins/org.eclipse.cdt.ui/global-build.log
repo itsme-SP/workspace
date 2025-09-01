@@ -1,4 +1,11 @@
-21:01:48 **** Build of configuration Debug for project stm32f401re_new ****
+22:00:35 **** Clean-only build of configuration Debug for project stm32f401re_new ****
+make -j12 clean 
+rm -rf ./driver/src/stm32f_gpio_driver.cyclo ./driver/src/stm32f_gpio_driver.d ./driver/src/stm32f_gpio_driver.o ./driver/src/stm32f_gpio_driver.su ./driver/src/stm32f_spi_driver.cyclo ./driver/src/stm32f_spi_driver.d ./driver/src/stm32f_spi_driver.o ./driver/src/stm32f_spi_driver.su
+rm -rf ./Startup/startup_stm32f401retx.d ./Startup/startup_stm32f401retx.o
+rm -rf ./Src/006_SPI_Tx_Only_Esp32.cyclo ./Src/006_SPI_Tx_Only_Esp32.d ./Src/006_SPI_Tx_Only_Esp32.o ./Src/006_SPI_Tx_Only_Esp32.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout stm32f401re_new.elf stm32f401re_new.list stm32f401re_new.map
+ 
+22:00:35 **** Build of configuration Debug for project stm32f401re_new ****
 make -j12 all 
 arm-none-eabi-gcc "../driver/src/stm32f_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_gpio_driver.d" -MT"driver/src/stm32f_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_gpio_driver.o"
 arm-none-eabi-gcc "../driver/src/stm32f_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_spi_driver.d" -MT"driver/src/stm32f_spi_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_spi_driver.o"
@@ -12,14 +19,14 @@ D:/shiva/em/workspace/stm32f401re_new/Debug/../Startup/startup_stm32f401retx.s:9
 collect2.exe: error: ld returned 1 exit status
 make: *** [makefile:64: stm32f401re_new.elf] Error 1
 "make -j12 all" terminated with exit code 2. Build might be incomplete.
-21:19:22 **** Clean-only build of configuration Debug for project stm32f401re_new ****
+22:01:38 **** Clean-only build of configuration Debug for project stm32f401re_new ****
 make -j12 clean 
 rm -rf ./driver/src/stm32f_gpio_driver.cyclo ./driver/src/stm32f_gpio_driver.d ./driver/src/stm32f_gpio_driver.o ./driver/src/stm32f_gpio_driver.su ./driver/src/stm32f_spi_driver.cyclo ./driver/src/stm32f_spi_driver.d ./driver/src/stm32f_spi_driver.o ./driver/src/stm32f_spi_driver.su
 rm -rf ./Startup/startup_stm32f401retx.d ./Startup/startup_stm32f401retx.o
-rm -rf ./Src/001_Led_Toggle.cyclo ./Src/001_Led_Toggle.d ./Src/001_Led_Toggle.o ./Src/001_Led_Toggle.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf ./Src/006_SPI_Tx_Only_Esp32.cyclo ./Src/006_SPI_Tx_Only_Esp32.d ./Src/006_SPI_Tx_Only_Esp32.o ./Src/006_SPI_Tx_Only_Esp32.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
 rm -rf default.size.stdout stm32f401re_new.elf stm32f401re_new.list stm32f401re_new.map
  
-21:19:22 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+22:01:38 **** Incremental Build of configuration Debug for project stm32f401re_new ****
 make -j12 all 
 arm-none-eabi-gcc "../driver/src/stm32f_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_gpio_driver.d" -MT"driver/src/stm32f_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_gpio_driver.o"
 arm-none-eabi-gcc "../driver/src/stm32f_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_spi_driver.d" -MT"driver/src/stm32f_spi_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_spi_driver.o"
@@ -27,6 +34,64 @@ arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP 
 arm-none-eabi-gcc "../Src/001_Led_Toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001_Led_Toggle.d" -MT"Src/001_Led_Toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001_Led_Toggle.o"
 arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
 arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/001_Led_Toggle.c: In function 'main':
+../Src/001_Led_Toggle.c:26:9: error: unknown type name 'GPIO_HANDLE_t'
+   26 |         GPIO_HANDLE_t GPIO_LED;
+      |         ^~~~~~~~~~~~~
+../Src/001_Led_Toggle.c:27:17: error: request for member 'pGPIOx' in something not a structure or union
+   27 |         GPIO_LED.pGPIOx=GPIOA;
+      |                 ^
+../Src/001_Led_Toggle.c:28:17: error: request for member 'GPIO_PINCONFIG' in something not a structure or union
+   28 |         GPIO_LED.GPIO_PINCONFIG.GPIO_PIN_NUMBER=GPIO_PIN_NO_6;
+      |                 ^
+../Src/001_Led_Toggle.c:28:49: error: 'GPIO_PIN_NO_6' undeclared (first use in this function); did you mean 'GPIO_PIN_SET'?
+   28 |         GPIO_LED.GPIO_PINCONFIG.GPIO_PIN_NUMBER=GPIO_PIN_NO_6;
+      |                                                 ^~~~~~~~~~~~~
+      |                                                 GPIO_PIN_SET
+../Src/001_Led_Toggle.c:28:49: note: each undeclared identifier is reported only once for each function it appears in
+../Src/001_Led_Toggle.c:30:17: error: request for member 'GPIO_PINCONFIG' in something not a structure or union
+   30 |         GPIO_LED.GPIO_PINCONFIG.GPIO_PIN_SPEED=GPIO_OP_HSP;
+      |                 ^
+../Src/001_Led_Toggle.c:30:48: error: 'GPIO_OP_HSP' undeclared (first use in this function)
+   30 |         GPIO_LED.GPIO_PINCONFIG.GPIO_PIN_SPEED=GPIO_OP_HSP;
+      |                                                ^~~~~~~~~~~
+../Src/001_Led_Toggle.c:31:17: error: request for member 'GPIO_PINCONFIG' in something not a structure or union
+   31 |         GPIO_LED.GPIO_PINCONFIG.GPIO_PIN_MODE=GPIO_MODE_OUT;
+      |                 ^
+../Src/001_Led_Toggle.c:31:47: error: 'GPIO_MODE_OUT' undeclared (first use in this function)
+   31 |         GPIO_LED.GPIO_PINCONFIG.GPIO_PIN_MODE=GPIO_MODE_OUT;
+      |                                               ^~~~~~~~~~~~~
+../Src/001_Led_Toggle.c:33:17: error: request for member 'GPIO_PINCONFIG' in something not a structure or union
+   33 |         GPIO_LED.GPIO_PINCONFIG.GPIO_OUTPUT_TYPE=GPIO_OP_TYPE_PP;
+      |                 ^
+../Src/001_Led_Toggle.c:33:50: error: 'GPIO_OP_TYPE_PP' undeclared (first use in this function)
+   33 |         GPIO_LED.GPIO_PINCONFIG.GPIO_OUTPUT_TYPE=GPIO_OP_TYPE_PP;
+      |                                                  ^~~~~~~~~~~~~~~
+../Src/001_Led_Toggle.c:34:17: error: request for member 'GPIO_PINCONFIG' in something not a structure or union
+   34 |         GPIO_LED.GPIO_PINCONFIG.GPIO_PULLUP_PULLDOWN=GPIO_PIN_NO_PUPD;
+      |                 ^
+../Src/001_Led_Toggle.c:34:54: error: 'GPIO_PIN_NO_PUPD' undeclared (first use in this function)
+   34 |         GPIO_LED.GPIO_PINCONFIG.GPIO_PULLUP_PULLDOWN=GPIO_PIN_NO_PUPD;
+      |                                                      ^~~~~~~~~~~~~~~~
+../Src/001_Led_Toggle.c:36:9: warning: implicit declaration of function 'GPIO_PeriClKCtrl' [-Wimplicit-function-declaration]
+   36 |         GPIO_PeriClKCtrl(GPIOA,ENABLE);
+      |         ^~~~~~~~~~~~~~~~
+../Src/001_Led_Toggle.c:37:9: warning: implicit declaration of function 'GPIO_Init' [-Wimplicit-function-declaration]
+   37 |         GPIO_Init(&GPIO_LED);
+      |         ^~~~~~~~~
+../Src/001_Led_Toggle.c:39:33: warning: implicit declaration of function 'GPIO_ToggleOutputPin' [-Wimplicit-function-declaration]
+   39 |                                 GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5); // Toggle PA5
+      |                                 ^~~~~~~~~~~~~~~~~~~~
+../Src/001_Led_Toggle.c:39:61: error: 'GPIO_PIN_NO_5' undeclared (first use in this function); did you mean 'GPIO_PIN_SET'?
+   39 |                                 GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5); // Toggle PA5
+      |                                                             ^~~~~~~~~~~~~
+      |                                                             GPIO_PIN_SET
+make: *** [Src/subdir.mk:25: Src/001_Led_Toggle.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:02:03 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/001_Led_Toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001_Led_Toggle.d" -MT"Src/001_Led_Toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001_Led_Toggle.o"
 arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: stm32f401re_new.elf
  
