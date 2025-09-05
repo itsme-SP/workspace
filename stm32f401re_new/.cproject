@@ -72,9 +72,12 @@
 							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec.1986968664" name="MCU Output Converter Motorola S-rec with symbols" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.866928464.1026405769" name="006_SPI_Tx_Only_Esp32.c" rcbsApplicability="disable" resourcePath="Src/006_SPI_Tx_Only_Esp32.c" toolsToInvoke="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.758208707.1945689270">
+						<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.758208707.1945689270" name="MCU/MPU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.758208707"/>
+					</fileInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
-						<entry excluding="006_SPI_Tx_Only_Esp32.c|005_spi_send_data_basic.c|004_button_interrupt_test.c|004_button_interrupt.c|003_led_toggle_from_external_button.c|002_led_button_control.c|spi_send_data_basic.c|button_interrupt_test.c|button_interrupt.c|led_toggle_from_external_button.c|led_button_control.c|main.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
+						<entry excluding="001_Led_Toggle.c|005_spi_send_data_basic.c|004_button_interrupt_test.c|004_button_interrupt.c|003_led_toggle_from_external_button.c|002_led_button_control.c|spi_send_data_basic.c|button_interrupt_test.c|button_interrupt.c|led_toggle_from_external_button.c|led_button_control.c|main.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Startup"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="driver"/>
 					</sourceEntries>

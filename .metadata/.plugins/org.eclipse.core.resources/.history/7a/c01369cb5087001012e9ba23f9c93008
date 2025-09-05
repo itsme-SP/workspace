@@ -1,0 +1,18 @@
+/*
+ * SPI_Tx_Only_Esp32.c
+ *
+ *  Created on: Aug 31, 2025
+ *      Author: Shivaprasad
+ */
+#include <stdio.h>
+#include "stm32f401xx.h"
+#include "stm32f_gpio_driver.h"
+#include "stm32f_spi_driver.h"
+void GPIO_Config(GPIO_HANDLE_t *pHandlex){
+	*pHandlex GPIOB_Handle;
+
+
+}
+int main(void){
+	GPIO_Config();
+}

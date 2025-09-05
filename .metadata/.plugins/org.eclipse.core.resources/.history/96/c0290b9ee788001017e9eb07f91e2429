@@ -5,7 +5,6 @@
  *      Author: Shivaprasad
  */
 #include <stdio.h>
-#include <string.h>
 #include "stm32f401xx.h"
 #include "stm32f_gpio_driver.h"
 #include "stm32f_spi_driver.h"
@@ -42,8 +41,5 @@ int main(void){
 	SPI_Config();
 	SPI_Peripheral_Config(SPI2,ENABLE);
 	SPI_SSIConfig(SPI2, DISABLE);
-	SPI_SendData(SPI2,(uint8_t*)data, strlen(data));
-	SPI_DeInit(SPI2);
-	while(1);
-	return 0;
+	SPI_SendData(SPI2,(uint8_t*)data, sizeof(data));
 }

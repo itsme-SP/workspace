@@ -162,8 +162,8 @@ void SPI_Peripheral_Config(SPI_periph_defn_t *pSPIx,uint8_t En_Or_Di){
 /*
  * @fn                           -SPI_SSIConfig
  *
- * @brief                        -this function is used to set SSI bit high when we turn the SSM(software slave select management) as high
- *                                we will need to turn this bit on otherwise it will turn of the modf and spi wont work
+ * @brief                        -this function is for enabling the spi peripheral. After the spi values are set into the spi register we need to enable
+ *                                the spi enable register otherwise the spi register will not work
  *
  * SPI_periph_defn_t            - it is used to set or reset the peripherals at the particular address
  *En_Or_Di                     - Enable or disable the
