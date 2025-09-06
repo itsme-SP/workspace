@@ -1,4 +1,4 @@
-22:32:31 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+14:15:52 **** Incremental Build of configuration Debug for project stm32f401re_new ****
 make -j12 all 
 arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
 arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,11 +7,11 @@ Finished building target: stm32f401re_new.elf
 arm-none-eabi-size  stm32f401re_new.elf 
 arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
    text	   data	    bss	    dec	    hex	filename
-   2856	      0	   1568	   4424	   1148	stm32f401re_new.elf
+   2888	      0	   1568	   4456	   1168	stm32f401re_new.elf
 Finished building: default.size.stdout
  
 Finished building: stm32f401re_new.list
  
 
-22:32:32 Build Finished. 0 errors, 0 warnings. (took 719ms)
+14:15:53 Build Finished. 0 errors, 0 warnings. (took 743ms)
 

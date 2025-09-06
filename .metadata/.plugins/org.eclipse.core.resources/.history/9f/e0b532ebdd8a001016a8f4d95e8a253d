@@ -9,12 +9,6 @@
 #include "stm32f401xx.h"
 #include "stm32f_gpio_driver.h"
 #include "stm32f_spi_driver.h"
-
-void delay(){
-	for(int i=0;i<5000;i++);
-}
-
-
 void GPIO_Config(){
 	GPIO_HANDLE_t GPIOB_Handle;
 	GPIOB_Handle.pGPIOx=GPIOB;
@@ -37,7 +31,6 @@ void GPIO_Config(){
 	GPIOB_Handle.GPIO_PINCONFIG.GPIO_PIN_NUMBER=GPIO_PIN_NO_15;
 	GPIO_Init(&GPIOB_Handle);
 
-	//we did not use MISO line because we are only transmitting no reception from the other side
 
 }
 
@@ -55,45 +48,22 @@ void SPI_Config(){
 	SPI_Init(&SPI_Cnfg);
 }
 
-void Button_init(){
-	GPIO_HANDLE_t GPIO_BUTTON;
-	    GPIO_BUTTON.pGPIOx=GPIOC;
-		GPIO_BUTTON.GPIO_PINCONFIG.GPIO_PIN_NUMBER=GPIO_PIN_NO_13;
-		GPIO_BUTTON.GPIO_PINCONFIG.GPIO_PIN_MODE=GPIO_MODE_IN;
-		GPIO_BUTTON.GPIO_PINCONFIG.GPIO_PIN_SPEED=GPIO_OP_VHSP;
-		GPIO_BUTTON.GPIO_PINCONFIG.GPIO_PIN_SPEED=GPIO_PIN_NO_PUPD;
-		GPIO_Init(&GPIO_BUTTON);
-
-}
-
 
 int main(void){
 	char data[]="Hello World";
 	GPIO_Config();
 	SPI_Config();
 	SPI_SSOEConfig(SPI2, ENABLE);
-	Button_init();
-
-	while(1){
-		//when the button is pressed only then the spi will transmit the data
-		while(!(GPIO_ReadFromInputPin(GPIOC, GPIO_PIN_NO_13))){
-			delay();
-			//sets the SPE bit as high
-			SPI_Peripheral_Config(SPI2, ENABLE);
+	SPI_Peripheral_Config(SPI2,ENABLE);
+	/*
+	 * we don't need ssi because we are not using software slave select management
+	 */
+	//SPI_SSIConfig(SPI2, DISABLE);
 
 
-		/*
-		 * we don't need SSI because we are not using software slave select management
-		 */
-		//SPI_SSIConfig(SPI2, DISABLE);
+	SPI_SendData(SPI2,(uint8_t*)data, strlen(data));
+	SPI_DeInit(SPI2);
 
-		SPI_SendData(SPI2,(uint8_t*)data, strlen(data));
-
-		//the while loop will wait till the busy flag that is present in status register to be 0 and then break
-		while(SPI_FlagStatus(SPI2, SPI_BSY_FLAG));
-		//sets the SPE bit as low turning off the spi register
-		SPI_Peripheral_Config(SPI2, DISABLE);
-		}
-	}
+	while(1);
 	return 0;
 }

@@ -89,7 +89,7 @@ int main(void){
 
 		SPI_SendData(SPI2,(uint8_t*)data, strlen(data));
 
-		//the while loop will wait till the busy flag that is present in status register to be 0 and then break
+		// the while loop will wait till the busy flag that is present in status register to be 0 and then break
 		while(SPI_FlagStatus(SPI2, SPI_BSY_FLAG));
 		//sets the SPE bit as low turning off the spi register
 		SPI_Peripheral_Config(SPI2, DISABLE);

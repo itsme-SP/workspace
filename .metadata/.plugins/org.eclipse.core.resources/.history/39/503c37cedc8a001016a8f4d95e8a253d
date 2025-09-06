@@ -184,33 +184,6 @@ void SPI_SSIConfig(SPI_periph_defn_t *pSPIx,uint8_t En_Or_Di){
 
 
 /*
- * @fn                           -SPI_SSOEConfig(slave select output Enable)
- *
- * @brief                        - it used when we turn on the SSI bit as high or hardware slave select management and when we turn on the SPE
- *                                 bit we need to turn this bit on beacuse we need the SSI bit to be n only when SPE bit is on and using this bit
- *                                 we can achieve that
- *
- *
- * * SPI_periph_defn_t          - it is used to set or reset the peripherals at the particular address
- * En_Or_Di                       - Enable or disable the
- * @return                       -none
- *
- * @Note                         -none
- */
-
-void SPI_SSOEConfig(SPI_periph_defn_t *pSPIx,uint8_t EN_Or_Di){
-	if(EN_Or_Di==ENABLE){
-		pSPIx->CR2|=(1<<SPI_CR2_SSOE);
-	}
-	else
-	{
-		pSPIx->CR2&=~(1<<SPI_CR2_SSOE);
-	}
-}
-
-
-
-/*
  * @fn                           -SPI_Deinit
  *
  * @brief                        -this function will disable the SPI PIN/PORT

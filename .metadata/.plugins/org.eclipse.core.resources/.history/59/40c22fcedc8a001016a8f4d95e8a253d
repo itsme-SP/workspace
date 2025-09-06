@@ -27,7 +27,7 @@ typedef struct{
  */
 #define SPI_TXE_FLAG (1<<SPI_SR_TXE)
 #define SPI_RXE_FLAG (1<<SPI_SR_RXNE)
-#define SPI_BSY_FLAG (1<<SPI_SR_BSY)
+#define SPI_BSY_FLAG (1<<SPI_SR_BSY);
 
 /*
  *
@@ -62,9 +62,8 @@ void SPI_Interrupt_Handling(SPI_HANDLE_t *pHandle );
  * other peripheral control API's
  */
 void SPI_Peripheral_Config(SPI_periph_defn_t *pSPIx,uint8_t En_Or_Di);
+
 void SPI_SSIConfig(SPI_periph_defn_t *pSPIx,uint8_t En_Or_Di);
-void SPI_SSOEConfig(SPI_periph_defn_t *pSPIx,uint8_t EN_Or_Di);
-uint8_t SPI_FlagStatus(SPI_periph_defn_t *pSPIx,uint32_t FLAG_NAME);
 
 
 

@@ -199,7 +199,7 @@ void SPI_SSIConfig(SPI_periph_defn_t *pSPIx,uint8_t En_Or_Di){
  */
 
 void SPI_SSOEConfig(SPI_periph_defn_t *pSPIx,uint8_t EN_Or_Di){
-	if(EN_Or_Di==ENABLE){
+	if((EN_Or_Di==ENABLE){
 		pSPIx->CR2|=(1<<SPI_CR2_SSOE);
 	}
 	else

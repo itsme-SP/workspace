@@ -251,3 +251,293 @@ Finished building: default.size.stdout
  
 Finished building: stm32f401re_new.list
  
+10:00:07 **** Clean-only build of configuration Debug for project stm32f401re_new ****
+make -j12 clean 
+rm -rf ./driver/src/stm32f_gpio_driver.cyclo ./driver/src/stm32f_gpio_driver.d ./driver/src/stm32f_gpio_driver.o ./driver/src/stm32f_gpio_driver.su ./driver/src/stm32f_spi_driver.cyclo ./driver/src/stm32f_spi_driver.d ./driver/src/stm32f_spi_driver.o ./driver/src/stm32f_spi_driver.su
+rm -rf ./Startup/startup_stm32f401retx.d ./Startup/startup_stm32f401retx.o
+rm -rf ./Src/006_SPI_Tx_Only_Esp32.cyclo ./Src/006_SPI_Tx_Only_Esp32.d ./Src/006_SPI_Tx_Only_Esp32.o ./Src/006_SPI_Tx_Only_Esp32.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout stm32f401re_new.elf stm32f401re_new.list stm32f401re_new.map
+ 
+10:00:10 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../driver/src/stm32f_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_gpio_driver.d" -MT"driver/src/stm32f_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_gpio_driver.o"
+arm-none-eabi-gcc "../driver/src/stm32f_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_spi_driver.d" -MT"driver/src/stm32f_spi_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_spi_driver.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f401retx.d" -MT"Startup/startup_stm32f401retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f401retx.o" "../Startup/startup_stm32f401retx.s"
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2816	      0	   1568	   4384	   1120	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+10:19:00 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../driver/src/stm32f_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_spi_driver.d" -MT"driver/src/stm32f_spi_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_spi_driver.o"
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+../driver/src/stm32f_spi_driver.c: In function 'SPI_SSOEConfig':
+../driver/src/stm32f_spi_driver.c:202:22: warning: suggest parentheses around comparison in operand of '==' [-Wparentheses]
+  202 |         if(pSPIx->CR1==(1<<SPI_CR1_SPE)==1){
+      |            ~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2816	      0	   1568	   4384	   1120	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+10:19:37 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../driver/src/stm32f_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_spi_driver.d" -MT"driver/src/stm32f_spi_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_spi_driver.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2816	      0	   1568	   4384	   1120	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+10:20:42 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../driver/src/stm32f_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_spi_driver.d" -MT"driver/src/stm32f_spi_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_spi_driver.o"
+../driver/src/stm32f_spi_driver.c: In function 'SPI_SSOEConfig':
+../driver/src/stm32f_spi_driver.c:202:30: error: expected ')' before '{' token
+  202 |         if((EN_Or_Di==ENABLE){
+      |           ~                  ^
+      |                              )
+../driver/src/stm32f_spi_driver.c:209:1: error: expected expression before '}' token
+  209 | }
+      | ^
+make: *** [driver/src/subdir.mk:22: driver/src/stm32f_spi_driver.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+10:20:49 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../driver/src/stm32f_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_spi_driver.d" -MT"driver/src/stm32f_spi_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_spi_driver.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2816	      0	   1568	   4384	   1120	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+10:22:43 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2880	      0	   1568	   4448	   1160	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+10:26:58 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2932	      0	   1568	   4500	   1194	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+10:29:53 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2992	      0	   1568	   4560	   11d0	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+10:33:34 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2928	      0	   1568	   4496	   1190	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+11:35:22 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+../Src/006_SPI_Tx_Only_Esp32.c: In function 'delay':
+../Src/006_SPI_Tx_Only_Esp32.c:14:13: error: 'i' undeclared (first use in this function)
+   14 |         for(i=0;i<5000;i++);
+      |             ^
+../Src/006_SPI_Tx_Only_Esp32.c:14:13: note: each undeclared identifier is reported only once for each function it appears in
+../Src/006_SPI_Tx_Only_Esp32.c: In function 'main':
+../Src/006_SPI_Tx_Only_Esp32.c:87:1: error: expected declaration or statement at end of input
+   87 | }
+      | ^
+make: *** [Src/subdir.mk:25: Src/006_SPI_Tx_Only_Esp32.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+11:35:31 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+../Src/006_SPI_Tx_Only_Esp32.c: In function 'main':
+../Src/006_SPI_Tx_Only_Esp32.c:87:1: error: expected declaration or statement at end of input
+   87 | }
+      | ^
+make: *** [Src/subdir.mk:25: Src/006_SPI_Tx_Only_Esp32.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+11:35:47 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2984	      0	   1568	   4552	   11c8	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+14:03:09 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2976	      0	   1568	   4544	   11c0	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+14:07:51 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+../Src/006_SPI_Tx_Only_Esp32.c: In function 'main':
+../Src/006_SPI_Tx_Only_Esp32.c:82:25: warning: implicit declaration of function 'SPI_Peripheral_config'; did you mean 'SPI_Peripheral_Config'? [-Wimplicit-function-declaration]
+   82 |                         SPI_Peripheral_config(SPI2, ENABLE);
+      |                         ^~~~~~~~~~~~~~~~~~~~~
+      |                         SPI_Peripheral_Config
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/006_SPI_Tx_Only_Esp32.o: in function `main':
+D:/shiva/em/workspace/stm32f401re_new/Debug/../Src/006_SPI_Tx_Only_Esp32.c:82:(.text.main+0x2e): undefined reference to `SPI_Peripheral_config'
+C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: D:/shiva/em/workspace/stm32f401re_new/Debug/../Src/006_SPI_Tx_Only_Esp32.c:92:(.text.main+0x4a): undefined reference to `SPI_Peripheral_config'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: stm32f401re_new.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+14:08:20 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/006_SPI_Tx_Only_Esp32.o: in function `main':
+D:/shiva/em/workspace/stm32f401re_new/Debug/../Src/006_SPI_Tx_Only_Esp32.c:82:(.text.main+0x2e): undefined reference to `SPI_Peripheral_config'
+C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: D:/shiva/em/workspace/stm32f401re_new/Debug/../Src/006_SPI_Tx_Only_Esp32.c:92:(.text.main+0x4a): undefined reference to `SPI_Peripheral_config'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: stm32f401re_new.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+14:08:51 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2872	      0	   1568	   4440	   1158	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+14:11:43 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+In file included from ../Src/006_SPI_Tx_Only_Esp32.c:11:
+../Src/006_SPI_Tx_Only_Esp32.c: In function 'main':
+D:/shiva/em/workspace/stm32f401re_new/driver/inc/stm32f_spi_driver.h:30:37: error: expected ')' before ';' token
+   30 | #define SPI_BSY_FLAG (1<<SPI_SR_BSY);
+      |                                     ^
+../Src/006_SPI_Tx_Only_Esp32.c:92:38: note: in expansion of macro 'SPI_BSY_FLAG'
+   92 |                 SPI_FlagStatus(SPI2, SPI_BSY_FLAG);
+      |                                      ^~~~~~~~~~~~
+../Src/006_SPI_Tx_Only_Esp32.c:92:31: note: to match this '('
+   92 |                 SPI_FlagStatus(SPI2, SPI_BSY_FLAG);
+      |                               ^
+make: *** [Src/subdir.mk:25: Src/006_SPI_Tx_Only_Esp32.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+14:11:55 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../driver/src/stm32f_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"driver/src/stm32f_spi_driver.d" -MT"driver/src/stm32f_spi_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "driver/src/stm32f_spi_driver.o"
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2880	      0	   1568	   4448	   1160	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+14:14:50 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2888	      0	   1568	   4456	   1168	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
+14:15:52 **** Incremental Build of configuration Debug for project stm32f401re_new ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/006_SPI_Tx_Only_Esp32.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I../Inc -I"D:/shiva/em/workspace/stm32f401re_new/driver/inc" -I"D:/shiva/em/workspace/stm32f401re_new/driver/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/006_SPI_Tx_Only_Esp32.d" -MT"Src/006_SPI_Tx_Only_Esp32.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/006_SPI_Tx_Only_Esp32.o"
+arm-none-eabi-gcc -o "stm32f401re_new.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\shiva\em\workspace\stm32f401re_new\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f401re_new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f401re_new.elf
+ 
+arm-none-eabi-size  stm32f401re_new.elf 
+arm-none-eabi-objdump -h -S stm32f401re_new.elf  > "stm32f401re_new.list"
+   text	   data	    bss	    dec	    hex	filename
+   2888	      0	   1568	   4456	   1168	stm32f401re_new.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f401re_new.list
+ 
